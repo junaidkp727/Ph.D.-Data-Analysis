@@ -1,9 +1,7 @@
 ##########***************###################**********************##############
 ############///                10-04-2024                   \\\\\\\\############
 ##########***************###################**********************##############
-Sys.setenv(http_proxy = "172.16.12.70:80",
-           https_proxy = "172.16.12.70:80")
-setwd("D:/0_PhD Work/6_DataAnalysis")
+setwd("---link---")
 library(tidyverse)
 library(mice)
 library(broom)
@@ -12,7 +10,7 @@ library(broom)
 ##########*Imputation of 2015-19 data
 ##########***************###################**********************##############
 #to prepare sub-domain wise data 2015-19
-data<-read.csv("D:/0_PhD Work/6_DataAnalysis/Objective 0/1_Data_15_19/data_V1_O_15_19.csv")
+data<-read.csv("---link---")
 
 # we need to separate the data based on the sub-domain.
 # Note: I have excluded those subdomains without any missing value because we dont need to impute them
@@ -46,7 +44,7 @@ SD18<-select(data, 2,5:11, HSy_7_1A: HSy_7_1L)
 i<-7
 # i am going to save the sub-domain wise 2015-19 data to a folder, so that i can use that later to impute
 for (i in 1:18) {
-  write.csv(get(sprintf("SD%d",i)),sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/1_Data_15_19/SD_15_19/SD%d.csv",i),row.names = F)
+  write.csv(get(sprintf("SD%d",i)),sprintf("---link---/SD%d.csv",i),row.names = F)
 }
        
 ##########***************###################**********************##############
@@ -56,7 +54,7 @@ for (i in 1:18) {
 
 data_V2<-list()
 for (i in 1:17) {
-  data<-read.csv(file.path(sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/1_Data_15_19/SD_15_19/SD%d.csv",i)))   
+  data<-read.csv(file.path(sprintf("---link---/SD%d.csv",i)))   
   #to find the missing values
   MP<-mean(is.na(data[,-(1:8)]))
   # i decided to generate 5 datasets if the missing proportion <=0.1, 
@@ -87,7 +85,7 @@ write.csv(aggregated_result, "data.csv")
 # in our study sub-domain health governance is constituted by a number binary variables
 ##########***************###################**********************##############
 i<-18
-data<-read.csv(file.path(sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/1_Data_15_19/SD_15_19/SD%d.csv",i)))
+data<-read.csv(file.path(sprintf("---link---/SD%d.csv",i)))
 data[, paste0("HSy_7_1", LETTERS[1:12])] <- lapply(data[, paste0("HSy_7_1", LETTERS[1:12])], as.factor)
 
 # since it is a binary variable we can not take mean values of multiple datasets
@@ -102,7 +100,7 @@ write.csv(df,'demo.csv')
 ##########***************###################**********************##############
 
 #to prepare sub-domain wise data 2020-21
-data<-read.csv("D:/0_PhD Work/6_DataAnalysis/Objective 0/2_Data_20_21/data_V1_O_20_21.csv")
+data<-read.csv("---link---")
 # we need to separate the data based on the sub-domain.
 # Note: I have excluded those subdomains without any missing value and with 
 #       complete missing values because we dont need to impute them
@@ -143,7 +141,7 @@ SD11<-select(data, 2,5:11, HSy_7_1A: HSy_7_1L)
 # i am going to save the sub-domain wise 2020-21 data to a folder, so that i 
 # can use that later to impute
 for (i in 1:11) {
-  write.csv(get(sprintf("SD%d",i)),sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/2_Data_20_21/SD_20_21/SD%d.csv",i),row.names = F)
+  write.csv(get(sprintf("SD%d",i)),sprintf("---link---/SD%d.csv",i),row.names = F)
 }
 
 ##########***************###################**********************##############
@@ -153,7 +151,7 @@ for (i in 1:11) {
 data_V2<-list()
 i<-3
 for (i in 1:10) {
-  data<-read.csv(file.path(sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/2_Data_20_21/SD_20_21/SD%d.csv",i)))   
+  data<-read.csv(file.path(sprintf("---link---/SD%d.csv",i)))   
   #to find the missing values
   MP<-mean(is.na(data[,-(1:8)]))
   # i decided to generate 5 datasets if the missing proportion <=0.1, 
@@ -178,20 +176,6 @@ for (i in 1:10) {
 # Combine all data frames in the list into one data frame
 df <- bind_cols(data_V2)
 write.csv(df,'demo.csv')
-##########***************###################**********************##############
-# here we are trying to impute categorical variables (Binary variables) and 
-# preferred imputation method is "logreg" (predictive mean matching)
-# in our study sub-domain health governance is constituted by a number binary variables
-##########***************###################**********************##############
-#i<-11
-#data<-read.csv(file.path(sprintf("D:/0_PhD Work/6_DataAnalysis/Objective 0/2_Data_20_21/SD_20_21/SD%d.csv",i)))
-#data[, paste0("HSy_7_1", LETTERS[1:12])] <- lapply(data[, paste0("HSy_7_1", LETTERS[1:12])], as.factor)
-# since it is a binary variable we can not take mean values of multiple datasets
-# generated using mice, therefore we will generate only one data set, m=1
-#MD <- mice(data, m=1, maxit=50, method="logreg", pred= quickpred(data), 
-#           seed = 23189, printFlag = FALSE)
-#df<-complete(MD,1)
-#write.csv(df,'demo.csv')
 
 ################################################################################
 # NOw I want collate 2015-19 original and imputed indicators data with 2020-2021
@@ -3548,3 +3532,4 @@ df<- sapply (data, FUN = function(x) c(Mean = mean(x, na.rm = TRUE),
                                        MAX = max(x, na.rm = T)))
 df<- data.frame(df)
 df<- t(df)
+
