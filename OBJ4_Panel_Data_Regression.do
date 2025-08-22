@@ -6,7 +6,7 @@ Effect of health risk factors index on Health status composite and sub-indices b
 ================================================================================
 */
 clear all
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_20_21_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -75,7 +75,7 @@ Effect of health service coverage index on Health status composite and sub-indic
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_15_19_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -145,7 +145,7 @@ Effect of health system index on Health status composite and sub-indices between
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_20_21_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -217,7 +217,7 @@ Effect of sub-indices of health risk factors index on Health status composite an
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_20_21_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -288,7 +288,7 @@ Effect of sub-indices of health service coverage index on Health status composit
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_15_19_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -360,7 +360,7 @@ Effect of sub-indices of health system index on Health status composite and sub-
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_15_19_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -430,7 +430,7 @@ Effect of sub-indices of health system index on Health status composite and sub-
 */
 clear all
 
-import delimited "D:\0_PhD Work\6_DataAnalysis\Objective 1\data_V3_IC_20_21_V3.csv"
+import delimited "---link---"
 xtset id yn
 
 keep if hc==4
@@ -494,3 +494,4 @@ xtreg si_hs_1_pca si_hsy_1_pca si_hsy_3_pca si_hsy_5_pca si_hsy_7_pca  aux2 aux3
 xtreg si_hs_2_pca si_hsy_1_pca si_hsy_3_pca si_hsy_5_pca si_hsy_7_pca  aux2 aux3 aux4 aux5, re robust
 xtreg si_hs_3_pca si_hsy_1_pca si_hsy_3_pca si_hsy_5_pca si_hsy_7_pca  aux2 aux3 aux4 aux5, re robust
 xtreg si_hs_4_pca si_hsy_1_pca si_hsy_3_pca si_hsy_5_pca si_hsy_7_pca  aux2 aux3 aux4 aux5, re robust
+
